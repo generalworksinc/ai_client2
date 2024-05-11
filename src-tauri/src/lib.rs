@@ -13,6 +13,7 @@ use tauri::{Manager, Window};
 use tokio::runtime::Runtime;
 use tokio::task;
 use rand::prelude::*;
+#[cfg(desktop)]
 use tauri::menu::{Menu, MenuItem, Submenu, MenuItemBuilder, SubmenuBuilder, MenuBuilder};
 
 use reqwest::{header, multipart, Body, Client};
@@ -746,28 +747,30 @@ pub fn run() {
             reflesh_index,
         ])
         .setup(|app| {
-            let main_page = MenuItemBuilder::with_id("main","Main").build(app)?;
-            let settings = MenuItemBuilder::with_id("settings", "Settings").build(app)?;
-            let submenu = SubmenuBuilder::with_id(app, "menu", "Menu").items(&[&main_page, &settings]).build()?;
-            let menu = MenuBuilder::new(app).items(&[&submenu]).build()?;
+            #[cfg(desktop)]
+            {
+                let main_page = MenuItemBuilder::with_id("main","Main").build(app)?;
+                let settings = MenuItemBuilder::with_id("settings", "Settings").build(app)?;
+                let submenu = SubmenuBuilder::with_id(app, "menu", "Menu").items(&[&main_page, &settings]).build()?;
+                let menu = MenuBuilder::new(app).items(&[&submenu]).build()?;
 
-            app.set_menu(menu)?;
-            app.on_menu_event(move |app, event| {
-                let window_list = app.webview_windows();
-                let window_tuple = window_list.iter().next().unwrap();
-                println!("event: {:#?}, window:{:?}", event.id(), window_tuple.0);
-                let window = window_tuple.1;
-                match event.id().0.as_str() {
-                    "settings" => {
-                        window.emit("open_settings", "").unwrap();
+                app.set_menu(menu)?;
+                app.on_menu_event(move |app, event| {
+                    let window_list = app.webview_windows();
+                    let window_tuple = window_list.iter().next().unwrap();
+                    println!("event: {:#?}, window:{:?}", event.id(), window_tuple.0);
+                    let window = window_tuple.1;
+                    match event.id().0.as_str() {
+                        "settings" => {
+                            window.emit("open_settings", "").unwrap();
+                        }
+                        "main" => {
+                            window.emit("open_main", "").unwrap();
+                        }
+                        _ => {}
                     }
-                    "main" => {
-                        window.emit("open_main", "").unwrap();
-                    }
-                    _ => {}
-                }
-            });
-
+                });
+            }
             // dev modeのみブラウザのdevtoolを表示する
             #[cfg(debug_assertions)] // only include this code on debug builds
             {
