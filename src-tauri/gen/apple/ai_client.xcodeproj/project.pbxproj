@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F1F5C407BCDA0610740AC24 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355DF07A20F24C6756660330 /* QuartzCore.framework */; };
 		3E23364DF22CC3E378AE4E8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9961E885E6781AF5315FD181 /* Assets.xcassets */; };
+		3E5A297814239D7548976E7F /* libai_client_lib.a in Resources */ = {isa = PBXBuildFile; fileRef = 596F45F9F0EEA9AF76F8456D /* libai_client_lib.a */; };
 		5E156B651C3E15C19B0B77FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19462B40878CCD7553C91A96 /* CoreGraphics.framework */; };
 		631BDF8EC3C08AB6460B9FBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044AAD1760F0388548E6683F /* UIKit.framework */; };
 		7735D6FEB650E33FA2537787 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C9FCAFD297483B7C8B65955 /* main.mm */; };
@@ -26,6 +27,7 @@
 		355DF07A20F24C6756660330 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3C9FCAFD297483B7C8B65955 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		5867E4B514CCD3E159FCA5F2 /* bindings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bindings.h; sourceTree = "<group>"; };
+		596F45F9F0EEA9AF76F8456D /* libai_client_lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libai_client_lib.a; sourceTree = "<group>"; };
 		5ADEBC7473A3C515468C77E9 /* ai_client_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ai_client_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		603A0FE35CC621CF0F6D0DC5 /* ai_client_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ai_client_iOS.entitlements; sourceTree = "<group>"; };
 		7FE65735F2A9462D10D929B9 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -97,6 +99,14 @@
 			path = ai_client;
 			sourceTree = "<group>";
 		};
+		5B29B6F57C17CC58E7773C6A /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				596F45F9F0EEA9AF76F8456D /* libai_client_lib.a */,
+			);
+			path = debug;
+			sourceTree = "<group>";
+		};
 		9386C533B223A50AEB7517CF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 		C52F9AD34D2116665B8E9B4C /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				EF3620D71AE17A7FDEEF7610 /* arm64-sim */,
 			);
 			path = Externals;
 			sourceTree = "<group>";
@@ -145,6 +156,14 @@
 				4F8F7FC7C504933BF73FB3D2 /* ai_client */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		EF3620D71AE17A7FDEEF7610 /* arm64-sim */ = {
+			isa = PBXGroup;
+			children = (
+				5B29B6F57C17CC58E7773C6A /* debug */,
+			);
+			path = "arm64-sim";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +222,7 @@
 			files = (
 				3E23364DF22CC3E378AE4E8D /* Assets.xcassets in Resources */,
 				BACBE0B6BF0B565AF3E2166C /* assets in Resources */,
+				3E5A297814239D7548976E7F /* libai_client_lib.a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
