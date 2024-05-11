@@ -496,6 +496,7 @@ async fn load_messages(
 async fn reflesh_titles(
     app_handle: tauri::AppHandle,
 ) -> Result<String, String> {
+    println!("call reflesh_titles!");
     let dir = unsafe{SAVING_DIRECTORY.clone()};
     let title_path = std::path::Path::new(dir.as_str()).join(DIR_TITLE);
     if title_path.exists() {
@@ -766,6 +767,14 @@ pub fn run() {
                     _ => {}
                 }
             });
+
+            // dev modeのみブラウザのdevtoolを表示する
+            #[cfg(debug_assertions)] // only include this code on debug builds
+            {
+              let window = app.get_webview_window("main").unwrap();
+              window.open_devtools();
+              // window.close_devtools();
+            }
 
             init_config(app).expect("config init error");
             Ok(())

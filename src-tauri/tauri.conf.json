@@ -1,7 +1,7 @@
 {
   "productName": "ai_client",
-  "version": "0.0.0",
-  "identifier": "com.tauri.dev",
+  "version": "0.1.0",
+  "identifier": "jp.co.generalworks.ai-client",
   "build": {
     "beforeDevCommand": "bun run dev",
     "devUrl": "http://localhost:1420",
@@ -10,9 +10,11 @@
   },
   "app": {"windows": [
       {
+        "fullscreen": false,
+        "resizable": true,
         "title": "ai_client",
-        "width": 800,
-        "height": 600
+        "width": 1200,
+        "height": 1000
       }
     ],
     "security": {
